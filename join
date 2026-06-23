@@ -1,0 +1,9 @@
+AT1
+SELECT 
+    Products.ProductName AS NomeProduto,
+    Suppliers.SupplierName AS NomeFornecedor,
+    Suppliers.Country AS PaisFornecedor
+FROM Products
+INNER JOIN Suppliers
+    ON Products.SupplierID = Suppliers.SupplierID
+WHERE Products.CategoryID = 2;
