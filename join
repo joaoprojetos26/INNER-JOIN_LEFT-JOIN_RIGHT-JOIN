@@ -7,3 +7,22 @@ FROM Products
 INNER JOIN Suppliers
     ON Products.SupplierID = Suppliers.SupplierID
 WHERE Products.CategoryID = 2;
+
+at2
+SELECT Orders.OrderID AS IDPedido,
+Orders.OrderDate AS Data_Pedido,
+Shippers.ShipperName AS transportadora
+FROM Orders
+INNER JOIN Shippers
+    ON Orders.ShipperID = Shippers.ShipperID ;
+
+at3
+SELECT Products.ProductName AS NomeDoProduto,
+Products.Price AS 'Precos Maior Que 50.00',
+Suppliers.City AS Cidade
+FROM Products  
+INNER JOIN Suppliers 
+    ON Products.SupplierID = Suppliers.SupplierID
+    WHERE Products.Price>50 ;
+
+at4
