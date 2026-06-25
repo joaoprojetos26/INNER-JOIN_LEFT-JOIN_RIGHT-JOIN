@@ -56,6 +56,6 @@ Products.ProductName AS NomeProduto
 FROM Products
 INNER JOIN Suppliers
 ON Products.SupplierID = Suppliers.SupplierID
-WHERE Products.Price between 10 and 20
+WHERE Products.Price between 10 and 20 ;
 
 at8
