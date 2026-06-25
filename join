@@ -49,3 +49,13 @@ FROM Orders
 INNER JOIN Shippers
 ON Orders.ShipperID = Shippers.ShipperID
 WHERE Orders.OrderDate LIKE 2023;
+
+at7
+SELECT Suppliers.SupplierName AS NomeFornecerdor,
+Products.ProductName AS NomeProduto
+FROM Products
+INNER JOIN Suppliers
+ON Products.SupplierID = Suppliers.SupplierID
+WHERE Products.Price between 10 and 20
+
+at8
