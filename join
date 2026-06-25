@@ -26,3 +26,26 @@ INNER JOIN Suppliers
     WHERE Products.Price>50 ;
 
 at4
+SELECT Orders.OrderID AS IDPedido,
+Shippers.ShipperName AS NomeTransportadora
+FROM Orders
+INNER JOIN Shippers
+ON Orders.ShipperID = Shippers.ShipperID
+WHERE ShipperName LIKE 'Speedy Express';
+
+at5
+SELECT Products.ProductName AS NomeDoProduto,
+Suppliers.SupplierName AS NomeDoFornecedor
+FROM Products
+INNER JOIN Suppliers
+ON Products .SupplierID = Suppliers.SupplierID
+WHERE Suppliers.Country IN ('USA','BRAZIL');
+
+at6
+SELECT Orders.OrderID,
+Orders.OrderDate,
+Shippers.Phone
+FROM Orders
+INNER JOIN Shippers
+ON Orders.ShipperID = Shippers.ShipperID
+WHERE Orders.OrderDate LIKE 2023;
