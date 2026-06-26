@@ -74,4 +74,21 @@ LEFT JOIN Products
     ON Suppliers.SupplierID = Products.SupplierID;
 
 at10
+SELECT Shippers.ShipperName,
+       COUNT(Orders.Cod_Order) AS TotalPedidos
+FROM Shippers
+LEFT JOIN Orders
+    ON Shippers.Cod_Shipper = Orders.Cod_Shipper
+GROUP BY Shippers.Cod_Shipper, Shippers.ShipperName
+ORDER BY Shippers.ShipperName ASC;
+
+at11
+SELECT Products.ProductName AS NomeProduto,
+       Suppliers.SupplierName AS NomeFornecedor
+FROM Products
+RIGHT JOIN Suppliers
+    ON Products.Cod_Supplier = Suppliers.Cod_Supplier;
+
+at12
+
 
