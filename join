@@ -59,3 +59,19 @@ ON Products.SupplierID = Suppliers.SupplierID
 WHERE Products.Price between 10 and 20 ;
 
 at8
+SELECT Orders.OrderID AS IDPedido,
+Shippers.ShipperName AS NomeTransportadora
+FROM Orders
+INNER JOIN Shippers
+ON Orders.ShipperID = Shippers.ShipperID
+ORDER BY Shippers.ShipperName ASC;
+
+at9
+SELECT Suppliers.SupplierName AS NomeFornecedor,
+       Products.ProductName AS NomeProdutos
+FROM Suppliers
+LEFT JOIN Products
+    ON Suppliers.SupplierID = Products.SupplierID;
+
+at10
+
