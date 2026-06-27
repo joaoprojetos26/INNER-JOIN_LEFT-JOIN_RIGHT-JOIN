@@ -105,6 +105,46 @@ RIGHT JOIN Shippers
 on Orders.ShipperID = Shippers.ShipperID
 
 at 14
+SELECT 
+  Products.ProductName AS NomeDoProduto,
+  Suppliers.SupplierName AS NomeDoFronecedor,
+  Shippers.ShipperName AS NomeDaTransportadora
+FROM Orders
+INNER JOIN OrderDetails 
+    ON Orders.OrderID = OrderDetails.OrderID
+INNER JOIN Products 
+    ON OrderDetails.ProductID = Products.ProductID
+INNER JOIN Suppliers 
+    ON Products.SupplierID = Suppliers.SupplierID
+INNER JOIN Shippers 
+    ON Orders.ShipperID = Shippers.ShipperID
+WHERE Orders.OrderID = 10248;
+
+at15
+SELECT Suppliers.SupplierName AS NomeDoFornecedor,
+Suppliers.City AS CidadeDofornecedor,
+Orders.OrderDate AS DataDoPedido
+FROM Suppliers
+INNER JOIN Products
+    ON Suppliers.SupplierID = Products.SupplierID
+INNER JOIN OrderDetails
+    ON Products.ProductID = OrderDetails.ProductID
+INNER JOIN Orders
+    ON OrderDetails.OrderID = Orders.OrderID
+INNER JOIN Shippers
+    ON Orders.ShipperID = Shippers.ShipperID
+WHERE Shippers.ShipperName LIKE 'United Package';
+
+at16
+SELECT DISTINCT
+    Suppliers.SupplierName AS NomeDoFornecedor,
+    Products.ProductName AS Nomedoproduto
+FROM Suppliers
+INNER JOIN Products
+    ON Suppliers.SupplierID = Products.SupplierID
+LEFT JOIN OrderDetails
+    ON Products.ProductID = OrderDetails.ProductID
+WHERE OrderDetails.OrderID IS NULL;
 
 
         
