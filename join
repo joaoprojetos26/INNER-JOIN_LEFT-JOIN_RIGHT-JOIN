@@ -90,5 +90,23 @@ RIGHT JOIN Suppliers
     ON Products.Cod_Supplier = Suppliers.Cod_Supplier;
 
 at12
+SELECT Suppliers.SupplierName AS NomeDoFornecedor,
+Products.ProductName AS NomeDoProdutos
+FROM Products
+LEFT JOIN Suppliers 
+ON Products.SupplierID = Suppliers.SupplierID
+WHERE Suppliers.Country like 'Germany';
 
+at 13
+SELECT Shippers.ShipperName AS NomeTransportadora,
+Orders.OrderID AS IDPedido
+FROM Orders
+RIGHT JOIN Shippers
+on Orders.ShipperID = Shippers.ShipperID
+
+at 14
+
+
+        
+        
 
