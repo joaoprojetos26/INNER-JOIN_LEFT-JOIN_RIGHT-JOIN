@@ -146,6 +146,63 @@ LEFT JOIN OrderDetails
     ON Products.ProductID = OrderDetails.ProductID
 WHERE OrderDetails.OrderID IS NULL;
 
+at 17
+SELECT
+    Suppliers.ContactName AS ContatoFornecedor,
+    Products.ProductName AS NomeProduto
+FROM Products
+INNER JOIN Suppliers
+    ON Products.SupplierID = Suppliers.SupplierID
+INNER JOIN Categories
+    ON Products.CategoryID = Categories.CategoryID
+WHERE Products.CategoryID IN (1, 3, 5)
+AND Suppliers.Country LIKE 'UK';
+
+at18
+SELECT
+Suppliers.SupplierName AS NomeFornecedor,
+COUNT(DISTINCT Orders.OrderID) AS TotalPedidos
+FROM Suppliers
+INNER JOIN Products
+ON Suppliers.SupplierID = Products.SupplierID
+INNER JOIN OrderDetails
+ON Products.ProductID = OrderDetails.ProductID
+INNER JOIN Orders
+ON OrderDetails.OrderID = Orders.OrderID
+GROUP BY Suppliers.SupplierName
+ORDER BY TotalPedidos DESC;
+
+at19
+SELECT
+    Products.ProductName AS NomeProduto,
+    Categories.CategoryName AS NomeCategoria,
+    Suppliers.SupplierName AS NomeFornecedor
+FROM Products
+INNER JOIN Categories
+    ON Products.CategoryID = Categories.CategoryID
+INNER JOIN Suppliers
+    ON Products.SupplierID = Suppliers.SupplierID
+WHERE Products.Price > (
+    SELECT AVG(Price)
+    FROM Products
+);
+
+at20
+SELECT
+    Orders.OrderID AS Pedido,
+    Suppliers.SupplierName AS NomeFornecedor,
+    Shippers.ShipperName AS NomeTransportadora
+FROM Orders
+INNER JOIN OrderDetails
+    ON Orders.OrderID = OrderDetails.OrderID
+INNER JOIN Products
+    ON OrderDetails.ProductID = Products.ProductID
+INNER JOIN Suppliers
+    ON Products.SupplierID = Suppliers.SupplierID
+INNER JOIN Shippers
+    ON Orders.ShipperID = Shippers.ShipperID
+ORDER BY Orders.OrderID;
+
 
         
         
